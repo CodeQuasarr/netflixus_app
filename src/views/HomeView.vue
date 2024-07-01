@@ -1,9 +1,10 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-    <div class="bg-red-600 w-1/2">
-        ici
+    <div>
+        Home page
     </div>
 </template>
 
