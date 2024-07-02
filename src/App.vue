@@ -1,9 +1,18 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import {onMounted} from 'vue'
+import {initFlowbite} from 'flowbite'
+
+
+// initialize components based on data attribute selectors
+onMounted(() => {
+    initFlowbite();
+})
 </script>
 
+
 <template>
-    <div class="bg-red-600 w-1/2">
-        ici
+    <div class="h-screen text-white bg-black">
+        <RouterView />
     </div>
 </template>
 
