@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history: createWebHistory('http://localhost:3000/'),
+    history: createWebHistory(),
     routes,
     scrollBehavior() {
         return {

@@ -11,7 +11,7 @@ onMounted(() => {
 
 
 <template>
-    <div class="h-screen text-white bg-black">
+    <div class="min-h-screen text-white bg-accent">
         <RouterView />
     </div>
 </template>
