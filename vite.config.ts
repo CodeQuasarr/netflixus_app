@@ -2,13 +2,15 @@ import {defineConfig} from 'vite'
 import {fileURLToPath, URL} from "node:url";
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
+import * as path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue(), svgLoader()],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            // '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@': path.resolve(__dirname, './src')
         },
     },
     define: {
