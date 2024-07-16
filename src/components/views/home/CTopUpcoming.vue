@@ -33,7 +33,7 @@ onMounted(async () => {
                 v-for="upcoming in upcomingMovies"
                 :key="upcoming.id"
                 class="group relative items-center justify-center overflow-hidden cursor-pointer">
-                <MovieCard :title="upcoming.title"  :image="upcoming.img"/>
+                <MovieCard :id="upcoming.id" :title="upcoming.title"  :image="upcoming.img"/>
             </SwiperSlide>
         </div>
 
