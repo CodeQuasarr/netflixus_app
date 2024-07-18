@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import fetchTmdbWithApiKey from "../../../services/fetchTmdbWithApiKey.ts";
 import {onMounted, ref} from "vue";
 import MovieCard from "../../../components/views/MovieCard.vue";
 import {SwiperSlide} from "swiper/vue";
+import fetchTmdbWithApiKey from "@/services/fetchTmdbWithApiKey";
 
 const upcomingMovies = ref<{ id: number, title: string, img: string }[]>([]);
 const getUpcomingMovies = async () => {

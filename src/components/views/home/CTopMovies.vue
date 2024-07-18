@@ -3,9 +3,9 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import {onMounted, ref} from "vue";
-import fetchTmdbWithApiKey from "../../../services/fetchTmdbWithApiKey.ts";
-import MovieCard from "../../../components/views/MovieCard.vue";
-import {IMovieType} from "../../../types/movies/IMovieType.ts";
+import fetchTmdbWithApiKey from "@/services/fetchTmdbWithApiKey";
+import MovieCard from "@/components/views/MovieCard.vue";
+import {IMovieType} from "@/types/movies/IMovieType";
 import { Navigation } from 'swiper/modules';
 const onSwiper = (swiper: any) => {
     console.log(swiper);
@@ -69,7 +69,7 @@ onMounted(() => {
                 v-for="movie in movies"
                 :key="movie.id"
                 class="group relative items-center justify-center overflow-hidden cursor-pointer">
-                <MovieCard :title="movie.title" :image="movie.img"/>
+                <MovieCard :id="movie.id" :title="movie.title" :image="movie.img"/>
             </SwiperSlide>
         </Swiper>
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import {Bars3Icon} from '@heroicons/vue/24/outline'
+import Logo from '../../assets/svg/logo/logo.svg';
 
 const emit = defineEmits(['update:mobileMenuOpen']);
 
@@ -10,8 +11,8 @@ const emit = defineEmits(['update:mobileMenuOpen']);
         <div class="flex lg:flex-1">
             <a class="-m-1.5 p-1.5" href="#">
                 <span class="sr-only">Your Company</span>
-                <img alt="" class="h-8 w-auto"
-                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"/>
+                <img alt="" class="h-10 w-auto"
+                     src="../../assets/images/logo/logo.png"/>
             </a>
         </div>
         <div class="flex lg:hidden">

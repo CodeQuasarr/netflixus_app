@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Default from "../layouts/Default.vue";
 import IndexView from "../views/movies/IndexView.vue";
 import Error404 from "../Error404.vue";
+import MovieView from "../views/MovieView.vue";
 
 const routes: Array<RouteRecordRaw> = [
     // {path: '/login', name: 'LOGIN', component: LoginView},
@@ -12,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Default,
         children: [
             {path: '/', name: 'HOME', component: HomeView},
-            {path: '/movies', name: 'MOVIES', component: IndexView},
+            {path: '/movies', name: 'MOVIES', component: MovieView},
             {path: '/movie/:id', name: 'MOVIE', component: IndexView},
         ]
     },

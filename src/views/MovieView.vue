@@ -2,15 +2,16 @@
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import {onMounted, ref} from "vue";
-import {movieCategories} from "../helpers/StaticMovieCategory.ts";
+import {movieCategories} from "@/helpers/StaticMovieCategory";
+import MovieCard from "@/components/views/MovieCard.vue";
+import {IMovieType} from "@/types/movies/IMovieType";
 
 const onSwiper = (swiper: any) => {
     console.log(swiper);
 }
 
 const categories = movieCategories
-const movies = ref<{ id: number, img: string }[]>([]);
-const moviesByCategory = ref<{ [key: string]: { id: number, img: string }[] }>({});
+const moviesByCategory = ref<{ [key: string]: IMovieType[] }>({});
 
 const getMovies = async () => {
 
@@ -19,18 +20,10 @@ const getMovies = async () => {
         const data = await response.json();
         moviesByCategory.value[category.name] = data.results.map((movie: any) => ({
             id: movie.id,
+            title: movie.original_title ?? movie.original_name,
             img: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
-        })) as { id: number, img: string }[];
+        })) as IMovieType[];
     }
-    console.log(moviesByCategory.value);
-
-
-    const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=9e8b4196eddf67b48ce0377712f95acc');
-    const data = await response.json();
-    movies.value = data.results.map((movie: any) => ({
-        id: movie.id,
-        img: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
-    })) as { id: number, img: string }[];
 }
 
 onMounted(() => {
@@ -41,9 +34,9 @@ onMounted(() => {
 
 <template>
     <div class="pb-16">
-        <div class="container mx-auto bg-[#0E0E0E] p-8">
+        <div class="container mx-auto px-4 md:px-0">
             <div v-for="category in categories" :key="category.name" class="">
-                <h2 class="text-2xl font-bold mb-4">{{ category.name }}</h2>
+                <h2 class="text-2xl font-bold mb-5">{{ category.name }}</h2>
                 <Swiper
                     :breakpoints="{
                 0: {  // xs screen size (below 640px)
@@ -69,12 +62,8 @@ onMounted(() => {
                     <SwiperSlide
                         v-for="movie in moviesByCategory[category.name]"
                         :key="movie.id"
-                        class="group relative items-center justify-center overflow-hidden cursor-pointer">
-                        <div class="">
-                            <img
-                                :src="movie.img"
-                                alt="project 1" class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg">
-                        </div>
+                        class="group relative items-center justify-center overflow-hidden cursor-pointer mb-10">
+                        <MovieCard :id="movie.id" :title="movie.title"  :image="movie.img"/>
                     </SwiperSlide>
                 </Swiper>
             </div>

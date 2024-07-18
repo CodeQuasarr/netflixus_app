@@ -2,13 +2,12 @@
 import {ref} from "vue";
 import Navbar from "../components/templates/Navbar.vue";
 import MobileMenu from "../components/templates/MobileMenu.vue";
-
+import Logo from '../../assets/svg/logo/logo.svg';
 
 const navigation = [
-    {name: 'Product', href: '#'},
-    {name: 'Features', href: '#'},
-    {name: 'Marketplace', href: '#'},
-    {name: 'Company', href: '#'},
+    {name: 'Accueil', href: '/'},
+    {name: 'Films', href: '/movies'},
+    {name: 'Series', href: '/series'},
 ]
 
 const mobileMenuOpen = ref(false)
