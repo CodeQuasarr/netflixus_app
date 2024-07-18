@@ -2,7 +2,6 @@
 import {ref} from "vue";
 import Navbar from "../components/templates/Navbar.vue";
 import MobileMenu from "../components/templates/MobileMenu.vue";
-import Logo from '../../assets/svg/logo/logo.svg';
 
 const navigation = [
     {name: 'Accueil', href: '/'},

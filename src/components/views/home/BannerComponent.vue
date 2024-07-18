@@ -1,17 +1,34 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import fetchTmdbWithApiKey from "@/services/fetchTmdbWithApiKey";
+import {IMovieType} from "@/types/movies/IMovieType";
 
 const router = useRouter();
 
 const search = ref('');
+const movies = ref<IMovieType[]>([]);
 
 const handleSearch = () => {
-    if (search.value) {
-        router.push({ name: 'search', query: { q: search.value } });
+    if (search.value.trim()) {
+
+        // router.push({ name: 'search', query: { q: search.value } });
     }
 };
 
+const getSearchingMovies = async (query: string) => {
+    try {
+        const response = await fetchTmdbWithApiKey(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=fr-FR&page=1`);
+        const data = await response.json();
+        movies.value = data.results.slice(0, 7).map((movie: any) => ({
+            id: movie.id,
+            title: movie.original_title,
+            img: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
+        })) as IMovieType[];
+    } catch (e: any) {
+
+    }
+}
 
 </script>
 

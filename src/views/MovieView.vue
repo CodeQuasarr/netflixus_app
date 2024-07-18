@@ -5,6 +5,7 @@ import {onMounted, ref} from "vue";
 import {movieCategories} from "@/helpers/StaticMovieCategory";
 import MovieCard from "@/components/views/MovieCard.vue";
 import {IMovieType} from "@/types/movies/IMovieType";
+import CLoading from "@/components/CLoading.vue";
 
 const onSwiper = (swiper: any) => {
     console.log(swiper);
@@ -34,7 +35,9 @@ onMounted(() => {
 
 <template>
     <div class="pb-16">
-        <div class="container mx-auto px-4 md:px-0">
+        <CLoading
+            v-if="Object.keys(moviesByCategory).length === 0" />
+        <div v-else class="container mx-auto px-4 md:px-0">
             <div v-for="category in categories" :key="category.name" class="">
                 <h2 class="text-2xl font-bold mb-5">{{ category.name }}</h2>
                 <Swiper

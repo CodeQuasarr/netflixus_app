@@ -3,18 +3,26 @@ import {onMounted, ref} from "vue";
 import MovieCard from "../../../components/views/MovieCard.vue";
 import {SwiperSlide} from "swiper/vue";
 import fetchTmdbWithApiKey from "@/services/fetchTmdbWithApiKey";
+import {IMovieType} from "@/types/movies/IMovieType";
 
-const upcomingMovies = ref<{ id: number, title: string, img: string }[]>([]);
+const upcomingMovies = ref<IMovieType[]>([]);
+const loading = ref<boolean>(true);
+const emit = defineEmits(['loading']);
+
 const getUpcomingMovies = async () => {
     try {
+        loading.value = true;
         const response = await fetchTmdbWithApiKey('https://api.themoviedb.org/3/movie/upcoming?language=fr-FR&page=1');
         const data = await response.json();
         upcomingMovies.value = data.results.slice(0, 7).map((movie: any) => ({
             id: movie.id,
             title: movie.original_title,
             img: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
-        })) as { id: number, title: string, img: string }[];
+        })) as IMovieType[];
     } catch (e: any) {
+
+    } finally {
+        emit('loading', false);
 
     }
 }

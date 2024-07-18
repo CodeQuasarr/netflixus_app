@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {Bars3Icon} from '@heroicons/vue/24/outline'
-import Logo from '../../assets/svg/logo/logo.svg';
 
 const emit = defineEmits(['update:mobileMenuOpen']);
 
