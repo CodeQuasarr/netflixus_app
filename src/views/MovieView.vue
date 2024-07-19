@@ -1,76 +1,45 @@
 <script lang="ts" setup>
-import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import {onMounted, ref} from "vue";
 import {movieCategories} from "@/helpers/StaticMovieCategory";
-import MovieCard from "@/components/views/MovieCard.vue";
-import {IMovieType} from "@/types/movies/IMovieType";
+import {IMovieCategoryType} from "@/types/movies/IMovieType";
 import CLoading from "@/components/CLoading.vue";
+import {fetchMoviesByAllCategories} from "@/services/fetchMovies";
+import CTopMovies from "@/components/views/home/CTopMovies.vue";
+
+const theSwiper = ref<any>(null);
 
 const onSwiper = (swiper: any) => {
-    console.log(swiper);
+    theSwiper.value = swiper;
+}
+const slideNext = () => {
+    theSwiper.value.slideNext();
+}
+const slidePrev = () => {
+    theSwiper.value.slidePrev();
 }
 
 const categories = movieCategories
-const moviesByCategory = ref<{ [key: string]: IMovieType[] }>({});
+const moviesByCategory = ref<IMovieCategoryType>({});
+const getMovies = async () => moviesByCategory.value = await fetchMoviesByAllCategories();
 
-const getMovies = async () => {
-
-    for (const category of categories) {
-        const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=9e8b4196eddf67b48ce0377712f95acc&with_genres=' + category.id);
-        const data = await response.json();
-        moviesByCategory.value[category.name] = data.results.map((movie: any) => ({
-            id: movie.id,
-            title: movie.original_title ?? movie.original_name,
-            img: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
-        })) as IMovieType[];
-    }
-}
-
-onMounted(() => {
-    getMovies();
-})
+onMounted(() => getMovies());
 
 </script>
 
 <template>
     <div class="pb-16">
         <CLoading
-            v-if="Object.keys(moviesByCategory).length === 0" />
+            v-if="Object.keys(moviesByCategory).length === 0"
+        />
+
         <div v-else class="container mx-auto px-4 md:px-0">
-            <div v-for="category in categories" :key="category.name" class="">
-                <h2 class="text-2xl font-bold mb-5">{{ category.name }}</h2>
-                <Swiper
-                    :breakpoints="{
-                0: {  // xs screen size (below 640px)
-                    slidesPerView: 1,
-                    spaceBetween: 10
-                },
-                640: {  // sm screen size (640px and above)
-                    slidesPerView: 3,
-                    spaceBetween: 20
-                },
-                768: {  // md screen size (768px and above)
-                    slidesPerView: 4,
-                    spaceBetween: 30
-                },
-                1024: {  // lg screen size (1024px and above)
-                    slidesPerView: 8,
-                    spaceBetween: 30
-                }
-            }"
-                    class="rounded-lg shadow"
-                    @swiper="onSwiper"
-                >
-                    <SwiperSlide
-                        v-for="movie in moviesByCategory[category.name]"
-                        :key="movie.id"
-                        class="group relative items-center justify-center overflow-hidden cursor-pointer mb-10">
-                        <MovieCard :id="movie.id" :title="movie.title"  :image="movie.img"/>
-                    </SwiperSlide>
-                </Swiper>
+            <div v-for="(category, index) in categories" :key="category.name" class="">
+                <CTopMovies :card-title="category.name" :data="moviesByCategory[category.name]"/>
+                <hr v-if="index < categories.length - 1" class="border border-white/10 mt-16">
             </div>
         </div>
+
     </div>
 </template>
 

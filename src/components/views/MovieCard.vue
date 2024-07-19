@@ -6,7 +6,7 @@ import {truncateTitle} from "@/services/helpers";
 const props = defineProps<{
     image: string,
     title: string,
-    id: string
+    id: number
 }>();
 
 const trimmedTitle = ref<string>('');

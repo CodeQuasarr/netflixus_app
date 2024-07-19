@@ -4,6 +4,10 @@ export interface IMovieType {
     img: string,
 }
 
+export interface IMovieCategoryType {
+    [key: string]: IMovieType[];
+}
+
 // movie details type
 export interface IMovieDetailsType {
     id: string,
