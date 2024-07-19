@@ -10,7 +10,7 @@ export interface IMovieCategoryType {
 
 // movie details type
 export interface IMovieDetailsType {
-    id: string,
+    id: number,
     title: string,
     genres: string,
     img: string,
