@@ -3,11 +3,20 @@
 import {onMounted, ref, watch} from "vue";
 import {truncateTitle} from "@/services/helpers";
 
-const props = defineProps<{
-    image: string,
-    title: string,
-    id: number
-}>();
+const props = defineProps({
+    id: {
+        type: Number,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    }
+});
 
 const trimmedTitle = ref<string>('');
 const titleRef = ref<HTMLElement | null>(null);

@@ -10,7 +10,7 @@ const route = useRoute();
 const router = useRouter();
 const movie = ref<IMovieDetailsType>({
     genres: "",
-    id: "",
+    id: 0,
     img: "",
     production_companies: "",
     release_date: "",

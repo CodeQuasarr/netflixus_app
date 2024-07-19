@@ -7,18 +7,6 @@ import CLoading from "@/components/CLoading.vue";
 import {fetchMoviesByAllCategories} from "@/services/fetchMovies";
 import CTopMovies from "@/components/views/home/CTopMovies.vue";
 
-const theSwiper = ref<any>(null);
-
-const onSwiper = (swiper: any) => {
-    theSwiper.value = swiper;
-}
-const slideNext = () => {
-    theSwiper.value.slideNext();
-}
-const slidePrev = () => {
-    theSwiper.value.slidePrev();
-}
-
 const categories = movieCategories
 const moviesByCategory = ref<IMovieCategoryType>({});
 const getMovies = async () => moviesByCategory.value = await fetchMoviesByAllCategories();
