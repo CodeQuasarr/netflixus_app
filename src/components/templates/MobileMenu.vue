@@ -31,9 +31,9 @@ const emit = defineEmits(['update:mobileMenuOpen']);
                 <div class="space-y-2 py-6">
                     <slot name="navigation" />
                 </div>
-                <div class="py-6">
-                    <slot name="login" />
-                </div>
+<!--                <div class="py-6">-->
+<!--                    <slot name="login" />-->
+<!--                </div>-->
             </div>
         </div>
     </DialogPanel>

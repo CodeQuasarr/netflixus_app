@@ -5,8 +5,8 @@ import MobileMenu from "../components/templates/MobileMenu.vue";
 
 const navigation = [
     {name: 'Accueil', href: '/'},
-    {name: 'Films', href: '/movies'},
-    {name: 'Series', href: '/series'},
+    {name: 'Films', href: '/movies-categories'},
+    // {name: 'Series', href: '/series'},
 ]
 
 const mobileMenuOpen = ref(false)
@@ -14,7 +14,7 @@ const mobileMenuOpen = ref(false)
 
 <template>
     <div>
-        <header class="absolute inset-x-0 top-0 z-50">
+        <header class="fixed inset-x-0 top-0 z-50 bg-accent shadow">
             <Navbar :mobileMenuOpen="mobileMenuOpen" @update:mobileMenuOpen="mobileMenuOpen = $event">
                 <template #navigation>
                     <router-link

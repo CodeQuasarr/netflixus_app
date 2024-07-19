@@ -26,7 +26,7 @@ const emit = defineEmits(['update:mobileMenuOpen']);
             <slot name="navigation"/>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <slot name="login"/>
+<!--            <slot name="login"/>-->
         </div>
     </nav>
 </template>

@@ -38,10 +38,15 @@ const props = defineProps({
     data:{
         type: Object,
         required: false
+    },
+    categoryId: {
+        type: Number,
+        required: false
     }
 });
 
 const hideMovieUrl = props.movieUrl === undefined;
+const queryCategory = ref('');
 
 const getMovies = async () => {
     try {
@@ -54,6 +59,7 @@ const getMovies = async () => {
 }
 
 onMounted(() => {
+    queryCategory.value = props.categoryId ? `genre=${props.categoryId}` : '';
     if (props.data) {
         movies.value = props.data as IMovieType[];
     } else {
@@ -78,12 +84,12 @@ onMounted(() => {
                             <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
-                            <RouterLink to="/movies?" class="ms-1 text-2xl font-medium text-orange-500 hover:text-orange-600 md:ms-2">Voir plus</RouterLink>
+                            <RouterLink :to="`/movies?${queryCategory}`" class="ms-1 text-2xl font-medium text-orange-500 hover:text-orange-600 md:ms-2">Voir plus</RouterLink>
                         </div>
                     </li>
                 </ol>
             </div>
-            <div v-if="hideMovieUrl" class="flex items-center justify-center">
+            <div class="flex items-center justify-center">
                 <button class="border-2 border-orange-500 text-gray-100 hover:bg-orange-600 hover:text-orange-100 duration-300 rounded-2xl p-2 mx-1 cursor-pointer" @click="slidePrev">
                     <svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -130,30 +136,6 @@ onMounted(() => {
                     <MovieCard :id="movie.id" :image="movie.img" :title="movie.title"/>
                 </SwiperSlide>
             </Swiper>
-        </div>
-
-        <div v-if="!hideMovieUrl" class="flex justify-center">
-            <div class="mt-16 flex items-center justify-center">
-                <button class="border-2 border-orange-500 text-gray-100 hover:bg-orange-600 hover:text-orange-100 duration-300 rounded-2xl p-2 mx-1 cursor-pointer" @click="slidePrev">
-                    <svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                    </svg>
-                </button>
-
-                <RouterLink
-                    :to="props.movieUrl"
-                    class="mx-3 rounded-2xl px-8 py-2 border-2 border-orange-500 text-gray-100 hover:bg-orange-600 hover:text-orange-100 duration-300">
-                    Afficher plus de vidéos
-                </RouterLink>
-
-                <button class="border-2 border-orange-500 text-gray-100 hover:bg-orange-600 hover:text-orange-100 duration-300 rounded-2xl p-2 mx-1 cursor-pointer" @click="slideNext">
-                    <svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
-                    </svg>
-                </button>
-            </div>
         </div>
     </div>
 </template>

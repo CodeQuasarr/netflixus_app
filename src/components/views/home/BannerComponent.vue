@@ -9,10 +9,10 @@ const router = useRouter();
 const search = ref('');
 const movies = ref<IMovieType[]>([]);
 
-const handleSearch = () => {
+const handleSearch = async () => {
+    console.log(search.value);
     if (search.value.trim()) {
-
-        // router.push({ name: 'search', query: { q: search.value } });
+        await router.push('/movies?q=' + search.value);
     }
 };
 
@@ -41,8 +41,7 @@ const getSearchingMovies = async (query: string) => {
                 <span class="text-orange-500">Séries</span>
             </h1>
 
-            <form class="w-1/2 mx-auto mb-16">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="w-1/2 mx-auto mb-16">
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -59,9 +58,9 @@ const getSearchingMovies = async (query: string) => {
                         class="block w-full p-4 ps-10 text-sm text-gray-50 border border-orange-500 rounded-3xl bg-accent focus:ring-orange-500 focus:border-orange-500"
                         required
                     />
-                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Search</button>
+                    <button @click="handleSearch" class="text-white absolute end-2.5 bottom-2.5 bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Search</button>
                 </div>
-            </form>
+            </div>
 
         </div>
     </div>

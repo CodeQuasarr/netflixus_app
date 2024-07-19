@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <div class="py-5 relative">
+    <div class="py-5 relative mt-3">
         <CLoading
             v-if="loading"
         />
@@ -22,17 +22,17 @@
                     class="min-h-[700px]"
                 />
                 <CTopMovies
-                    movieUrl="/movies"
+                    movieUrl="/movies-categories"
                     cardTitle="Films"
                     url-path="https://api.themoviedb.org/3/trending/movie/day?language=fr-FR"
                     class="min-h-[700px]"
                 />
-                <CTopMovies
-                    movieUrl="/series"
-                    cardTitle="Series"
-                    url-path="https://api.themoviedb.org/3/tv/top_rated?language=fr-FR&page=1"
-                    class="min-h-[700px]"
-                />
+<!--                <CTopMovies-->
+<!--                    movieUrl="/series"-->
+<!--                    cardTitle="Series"-->
+<!--                    url-path="https://api.themoviedb.org/3/tv/top_rated?language=fr-FR&page=1"-->
+<!--                    class="min-h-[700px]"-->
+<!--                />-->
 
             </div>
         </div>
