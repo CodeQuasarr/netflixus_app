@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './main.css'
+import './assets/css/main.css'
 import 'flowbite';
 import App from './App.vue'
 import router from "./routes";
