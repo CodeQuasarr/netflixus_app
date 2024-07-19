@@ -1,22 +1,15 @@
 <script setup lang="ts">
 
 import {onMounted, ref, watch} from "vue";
+import {truncateTitle} from "@/services/helpers";
 
 const props = defineProps<{
     image: string,
     title: string,
-    id: number
+    id: string
 }>();
 
 const trimmedTitle = ref<string>('');
-
-const truncateTitle = (title: string, maxLength: number) => {
-    if (title.length <= maxLength) {
-        return title;
-    }
-    return title.slice(0, maxLength) + '...';
-};
-
 const titleRef = ref<HTMLElement | null>(null);
 
 const updateTrimmedTitle = () => {
@@ -49,7 +42,7 @@ watch(titleRef, () => {
                     :src="props.image"
                     alt="project 1" class="object-cover w-full rounded-xl h-96 md:h-auto md:w-48">
             </div>
-            <span ref="titleRef" class="block overflow-hidden whitespace-normal text-ellipsis">{{ trimmedTitle  }}</span>
+            <span ref="titleRef" class="block overflow-hidden whitespace-normal text-ellipsis">{{ trimmedTitle }}</span>
         </router-link>
     </div>
 </template>
