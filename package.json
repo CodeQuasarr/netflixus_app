@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --mode development --host",
+    "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
@@ -12,7 +12,6 @@
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.4",
     "dotenv": "^16.4.5",
-    "flowbite": "^2.4.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "swiper": "^11.1.4",
