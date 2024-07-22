@@ -1,12 +1,11 @@
-<script lang="ts" setup>
-
-
+<script setup>
 
 </script>
 
-
 <template>
-    <div class="min-h-screen text-white bg-accent">
+    <div>
+        <h1>Default</h1>
+        <p>Default layout content</p>
         <RouterView />
     </div>
 </template>
