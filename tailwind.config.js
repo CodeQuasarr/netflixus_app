@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{html,js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(90deg, #131720, transparent 80%), linear-gradient(0deg, #131720, transparent 80%)',
+      },
+      colors: {
+        accent: '#131720',
+      },
+    },
   },
   plugins: [],
 }
