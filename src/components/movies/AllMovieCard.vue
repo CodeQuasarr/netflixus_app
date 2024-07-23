@@ -37,18 +37,10 @@ const movies = ref<IMovieType[]>([]);
 const queryCategory = ref('');
 const movieService = new MoviesService();
 
-const onSwiper = (swiper: any) => {
-    console.log('swiper', swiper);
-    theSwiper.value = swiper;
-}
-const slideNext = () => {
-    console.log('slideNext');
-    theSwiper.value.slideNext();
-}
-const slidePrev = () => {
-    console.log('slidePrev');
-    theSwiper.value.slidePrev();
-}
+const onSwiper = (swiper: any) => theSwiper.value = swiper;
+const slideNext = () => theSwiper.value.slideNext();
+const slidePrev = () => theSwiper.value.slidePrev();
+
 const getMovies = async () => {
     try {
         if (props.urlPath) {
