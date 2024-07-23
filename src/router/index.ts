@@ -11,6 +11,9 @@ const router = createRouter({
       component: Default,
         children: [
           {path: '/', name: 'HOME', component: HomeView},
+          {path: '/movie/:id', name: 'MOVIE', component: HomeView},
+          {path: '/movies', name: 'MOVIES', component: HomeView},
+          {path: '/movies-categories', name: 'MOVIES_CATEGORIES', component: HomeView}
         ]
     }
   ]

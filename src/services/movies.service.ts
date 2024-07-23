@@ -26,7 +26,7 @@ export class MoviesService {
     async popularMovies() : Promise<IMovieType[]> {
         const response = await fetchTmdbWithApiKey(`${import.meta.env.VITE_API_BASE_URL}/movie/popular?${this.params}`);
         const data = await response.json();
-        return data.results.slice(0, 7).map((movie: any) => ({
+        return data.results.map((movie: any) => ({
             id: movie.id,
             title: movie.original_title,
             img: import.meta.env.VITE_IMAGE_BASE_URL + movie.poster_path
