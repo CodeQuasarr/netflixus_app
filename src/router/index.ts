@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Default from "@/layouts/Default.vue";
 import IndexView from "@/views/movies/IndexView.vue";
+import MovieShowView from "@/views/movies/MovieShowView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,7 +13,7 @@ const router = createRouter({
       component: Default,
         children: [
           {path: '/', name: 'HOME', component: HomeView},
-          {path: '/movie/:id', name: 'MOVIE', component: HomeView},
+          {path: '/movie/:id', name: 'MOVIE', component: MovieShowView},
           {path: '/movies', name: 'MOVIES', component: HomeView},
           {path: '/movies-categories', name: 'MOVIES_CATEGORIES', component: IndexView}
         ]
