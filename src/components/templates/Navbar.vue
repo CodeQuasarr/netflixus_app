@@ -8,11 +8,10 @@ const emit = defineEmits(['update:mobileMenuOpen']);
 <template>
     <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
         <div class="flex lg:flex-1">
-            <a class="-m-1.5 p-1.5" href="#">
-                <span class="sr-only">Your Company</span>
-                <img alt="" class="h-10 w-auto"
-                     src="../../assets/images/logo/logo.png"/>
-            </a>
+            <RouterLink class="-m-1.5 p-1.5" to="/">
+                <span class="sr-only">Netflixus</span>
+                <img alt="" class="h-10 w-auto" src="@/assets/images/logo/logo.png"/>
+            </RouterLink>
         </div>
         <div class="flex lg:hidden">
             <button class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200"

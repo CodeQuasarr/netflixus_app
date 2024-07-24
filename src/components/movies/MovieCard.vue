@@ -54,7 +54,7 @@ watch(titleRef, () => {
             <div class="">
                 <img
                     :src="props.image"
-                    alt="project 1" class="object-cover w-full rounded-xl h-96 md:h-auto md:w-48">
+                    alt="project 1" class="object-cover w-full rounded-xl h-96 md:h-auto md:w-48 opacity-90 transition-all duration-300 hover:opacity-10">
             </div>
             <span ref="titleRef" class="block overflow-hidden whitespace-normal text-ellipsis">{{ trimmedTitle }}</span>
         </router-link>
