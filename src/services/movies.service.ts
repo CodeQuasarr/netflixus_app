@@ -126,7 +126,7 @@ export class MoviesService {
         const response = await fetchTmdbWithApiKey(`${import.meta.env.VITE_API_BASE_URL}/movie/${id}/similar?${this.params.toString()}`);
         const similarData = await response.json();
 
-        return similarData.results.slice(0, 7).map((movie: any) => this.formatResponse(movie));
+        return similarData.results.slice(0, 8).map((movie: any) => this.formatResponse(movie));
     }
 
     /**

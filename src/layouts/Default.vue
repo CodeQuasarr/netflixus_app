@@ -51,4 +51,7 @@ const mobileMenuOpen = ref(false)
 
 <style scoped>
 
+.router-link-exact-active {
+    @apply text-orange-400 border-b-2 border-orange-400;
+}
 </style>

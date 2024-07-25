@@ -24,8 +24,8 @@ const props = defineProps({
         type: String,
         required: false
     },
-    data:{
-        type: Object,
+    moviesByCategory:{
+        type: Array as () => IMovieType[],
         required: false
     },
     categoryId: {
@@ -47,7 +47,10 @@ const slidePrev = () => theSwiper.value.slidePrev();
 const getMovies = async () => {
     try {
         loading.value = true;
-        if (props.urlPath) {
+        if (props.moviesByCategory) {
+            movies.value = props.moviesByCategory;
+        }
+        else if (props.urlPath) {
 
             //movies.value = await movieService.getMovies(queryCategory.value);
         } else {
@@ -62,11 +65,7 @@ const getMovies = async () => {
 
 onMounted(async () => {
     queryCategory.value = props.categoryId ? `genre=${props.categoryId}` : '';
-    if (props.data) {
-        movies.value = props.data as IMovieType[];
-    } else {
-        await getMovies();
-    }
+    await getMovies();
 })
 
 

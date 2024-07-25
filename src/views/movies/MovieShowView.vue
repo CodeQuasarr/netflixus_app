@@ -102,8 +102,9 @@ watch(() => route.params.id, async (newId) => {
                             </div>
                         </div>
                     </div>
-                    <div class="container mx-auto px-3 mt-16">
-                        <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-8">
+                    <div class="px-3 py-8 xl:py-0 xl:px-16 mt-16">
+                        <h2 class="text-3xl font-semibold mb-10">Films similaires</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-8">
                             <div
                                 v-for="similar in similarMovies"
                                 :key="similar.id"
