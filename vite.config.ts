@@ -18,4 +18,7 @@ export default defineConfig({
     'process.env.VITE_ACCESS_API_KEY': JSON.stringify(process.env.VITE_ACCESS_API_KEY),
     'process.env.VITE_IMAGE_BASE_URL': JSON.stringify(process.env.VITE_IMAGE_BASE_URL),
   },
+  server: {
+    port: 3004, // Définir le port à 3004
+  }
 })
